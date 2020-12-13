@@ -1,0 +1,6 @@
+<%= link_to project_url(project) do %>
+<div class= "card" id= <%=dom_id(project)%>>
+  <p> <%= project.name %></p>
+  <p><%= project.description %></p>
+</div>
+<%end %>
