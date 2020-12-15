@@ -11,10 +11,10 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    project = Project.new(project_params)
+    @project = Project.new(project_params)
     respond_to do |format|
-      if project.save
-        format.html { redirect_to projects_url, notice: "Sucessfully Created"}
+      if @project.save
+        format.html { redirect_to projects_url, notice: "Successfully Created"}
       else
         format.html { render :new, notice: "Something went wrong"}
       end
@@ -31,14 +31,14 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html{ rediect_to @project, notice: "Updated Successfully"}
+        format.html{ redirect_to @project, notice: "Updated Successfully"}
       else
         format.html{render :edit, error: "Something went wrong"}
       end
     end
   end
 
-  def destroy 
+  def destroy
     @project.delete
     respond_to do |format|
       format.html{ redirect_to projects_url, notice: "Project was deleted Successfully"}
